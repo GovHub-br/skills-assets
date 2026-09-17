@@ -1,0 +1,367 @@
+<title>Templates de Post Gov Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Reddit+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --purple: #613EFF; --navy: #0A005A; --magenta: #EF41FF; --pink: #F9006F; --peach: #FFE7E1;
+    --ui-bg: #F4F2F8; --ui-panel: #FFFFFF; --ui-text: #1B1533; --ui-muted: #6A6483; --ui-line: #DDD8EA;
+    --ui-accent: #613EFF; --ui-accent-text: #FFFFFF; --ui-chip: #ECE8F7; --ui-shadow: 0 6px 24px rgba(10,0,90,.10);
+    --font-ui: 'Reddit Sans', 'Open Sans', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --font-head: 'Oswald', 'Arial Narrow', 'Reddit Sans', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ui-bg: #14101F; --ui-panel: #1E1830; --ui-text: #F1EEF9; --ui-muted: #A9A2C4; --ui-line: #2E2745;
+      --ui-accent: #8C71FF; --ui-accent-text: #0A005A; --ui-chip: #2A2340; --ui-shadow: 0 6px 24px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ui-bg: #14101F; --ui-panel: #1E1830; --ui-text: #F1EEF9; --ui-muted: #A9A2C4; --ui-line: #2E2745;
+    --ui-accent: #8C71FF; --ui-accent-text: #0A005A; --ui-chip: #2A2340; --ui-shadow: 0 6px 24px rgba(0,0,0,.45);
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--ui-bg); color: var(--ui-text); font-family: var(--font-ui); font-size: 15px; padding-inline: 16px; padding-block: 0 48px; }
+  a { color: inherit; }
+
+  header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--ui-bg); margin-inline: -16px; padding: 16px 16px 12px; border-bottom: 1px solid var(--ui-line); }
+  .top__row { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: flex-end; max-width: 1480px; margin: 0 auto; }
+  .top h1 { font-family: var(--font-head); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: 22px; margin: 0; line-height: 1; }
+  .top p { margin: 4px 0 0; color: var(--ui-muted); font-size: 13.5px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 12px; max-width: 1480px; margin-inline: auto; }
+  .group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .group > span { font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--ui-muted); margin-right: 4px; font-weight: 600; }
+  .group button, .toggle { font: inherit; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--ui-line); background: var(--ui-panel); color: var(--ui-text); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+  .group button[aria-pressed="true"] { background: var(--ui-accent); color: var(--ui-accent-text); border-color: var(--ui-accent); }
+  .group button:focus-visible, .toggle:focus-visible, .tile:focus-visible { outline: 2px solid var(--ui-accent); outline-offset: 2px; }
+  .swatch { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15); }
+  .toggle input { accent-color: var(--ui-accent); margin: 0; }
+  .count { font-size: 13px; color: var(--ui-muted); margin-left: auto; align-self: center; font-variant-numeric: tabular-nums; }
+
+  main { max-width: 1480px; margin: 20px auto 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 22px 18px; }
+  .tile { background: var(--ui-panel); border-radius: 12px; box-shadow: var(--ui-shadow); padding: 10px; cursor: zoom-in; border: 0; text-align: left; font: inherit; color: inherit; display: flex; flex-direction: column; gap: 8px; }
+  .tile__frame { width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 6px; position: relative; }
+  .tile__frame .post { position: absolute; left: 0; top: 0; transform-origin: 0 0; transform: scale(var(--s, .25)); }
+  .tile__meta { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 13px; }
+  .tile__meta b { font-weight: 700; }
+  .tile__meta span { color: var(--ui-muted); font-size: 12px; }
+  .empty { padding: 60px 16px; text-align: center; color: var(--ui-muted); }
+
+  /* modal */
+  .modal { position: fixed; inset: 0; z-index: 50; background: rgba(10,0,30,.82); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; }
+  .modal__frame { position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+  .modal__frame .post { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  .modal__bar { display: flex; gap: 12px; align-items: center; color: #fff; font-size: 14px; flex-wrap: wrap; justify-content: center; }
+  .modal__bar button { font: inherit; font-weight: 600; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.4); background: transparent; color: #fff; cursor: pointer; }
+  .modal__bar b { font-weight: 700; }
+
+  /* ===== quadro 1080×1350 (mesma base do social-posts.md) ===== */
+  .post { position: relative; width: 1080px; height: 1350px; overflow: hidden; font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+  .post .shape { position: absolute; display: block; }
+  .post__h1 { margin: 0; font-family: var(--font-head); font-weight: 700; text-transform: uppercase; line-height: 1.04; letter-spacing: .005em; }
+  .post__p { margin: 0; font-size: 34px; line-height: 1.45; text-align: justify; hyphens: none; overflow-wrap: normal; }
+  .post__counter { position: absolute; font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .post__label { position: absolute; top: 80px; height: 96px; display: flex; align-items: center; font-family: var(--font-head); font-weight: 600; text-transform: uppercase; letter-spacing: .1em; font-size: 30px; }
+  .post__label--left { left: 0; padding: 0 44px 0 88px; border-radius: 0 48px 48px 0; }
+  .post__label--right { right: 0; padding: 0 88px 0 44px; border-radius: 48px 0 0 48px; }
+  .post__bottom { position: absolute; left: 88px; right: 88px; bottom: 72px; height: 44px; display: flex; align-items: center; font-size: 24px; gap: 40px; }
+  .post__bottom img { height: 44px; width: auto; display: block; }
+  .post__hint { font-weight: 500; display: inline-flex; align-items: center; gap: 12px; }
+  .post__content { position: absolute; display: flex; flex-direction: column; }
+  .chip { border-radius: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .chip img { width: 62%; height: auto; }
+  .card { border-radius: 24px; background: #fff; display: flex; flex-direction: column; gap: 18px; padding: 28px; }
+  .card__title { font-size: 31px; font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .card__desc { font-size: 25px; line-height: 1.35; color: #2D3748; text-align: justify; hyphens: none; overflow-wrap: normal; }
+  .post .zone { position: absolute; border: 4px dashed rgba(0,0,0,.35); border-radius: 12px; pointer-events: none; }
+  .post--light .zone { border-color: rgba(10,0,90,.45); }
+  .post--dark .zone { border-color: rgba(255,255,255,.55); }
+  .gallery--no-text .post .txt { visibility: hidden; }
+  .gallery--no-zones .post .zone { display: none; }
+  @media (prefers-reduced-motion: no-preference) { .tile { transition: transform .15s ease; } .tile:hover { transform: translateY(-2px); } }
+</style>
+
+<header class="top">
+  <div class="top__row">
+    <div>
+      <h1>Templates de post Gov Hub</h1>
+      <p>1080×1350 · 5 estruturas × 4 composições × 5 fundos. Clique num quadro para ampliar; ← → navegam.</p>
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+  <div class="filters">
+    <div class="group" id="f-struct"><span>Estrutura</span></div>
+    <div class="group" id="f-bg"><span>Fundo</span></div>
+    <div class="group" id="f-comp"><span>Composição</span></div>
+    <div class="group">
+      <label class="toggle"><input type="checkbox" id="t-text" checked> Texto de exemplo</label>
+      <label class="toggle"><input type="checkbox" id="t-zones"> Zonas de texto</label>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>Nenhum quadro com esses filtros.</div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  // @spec-start (bloco puro, sem DOM: gen.js do skills-assets lê daqui)
+  const C = { purple: '#613EFF', navy: '#0A005A', peach: '#FFE7E1', pink: '#F9006F', magenta: '#EF41FF', white: '#FFFFFF' };
+  const NAME = { purple: 'Roxo', navy: 'Navy', peach: 'Pêssego', pink: 'Rosa', magenta: 'Magenta', white: 'Branco' };
+
+  // Regras por fundo: texto, logo, cores de forma por papel (principal, secundária, detalhe, extra),
+  // pílula de rótulo [fundo, texto], chip, forma "segura" atrás de texto, CTA, numeral sobre a forma segura.
+  const BG = {
+    navy:    { text: '#FFFFFF', muted: 'rgba(255,255,255,.88)', dark: false, logo: 'white', roles: ['purple', 'magenta', 'peach', 'pink'], label: ['magenta', 'navy'], chip: 'purple', safe: 'purple', cta: ['pink', '#FFFFFF'], numeral: 'pink' },
+    purple:  { text: '#FFFFFF', muted: 'rgba(255,255,255,.88)', dark: false, logo: 'white', roles: ['navy', 'peach', 'magenta', 'pink'], label: ['peach', 'navy'], chip: 'navy', safe: 'navy', cta: ['pink', '#FFFFFF'], numeral: 'pink' },
+    peach:   { text: '#0A005A', muted: '#2D3748', dark: true, logo: 'navy', roles: ['purple', 'navy', 'magenta', 'pink'], label: ['magenta', 'navy'], chip: 'pink', safe: 'magenta', cta: ['pink', '#FFFFFF'], numeral: 'navy' },
+    pink:    { text: '#FFFFFF', muted: 'rgba(255,255,255,.9)', dark: false, logo: 'white', roles: ['navy', 'purple', 'peach', 'peach'], label: ['navy', 'white'], chip: 'navy', safe: 'navy', cta: ['navy', '#FFFFFF'], numeral: 'white' },
+    magenta: { text: '#0A005A', muted: '#1B1533', dark: true, logo: 'navy', roles: ['navy', 'purple', 'peach', 'peach'], label: ['peach', 'navy'], chip: 'navy', safe: 'peach', cta: ['navy', '#FFFFFF'], numeral: 'navy' },
+  };
+  const BG_ORDER = ['purple', 'navy', 'peach', 'pink', 'magenta'];
+
+  // Formas do graphic-elements-catalog (primitivas limpas, fill currentColor).
+  const SHAPES = {
+    circulo:     { vb: '0 0 100 100', d: 'M50 0a50 50 0 1 0 0 100a50 50 0 1 0 0-100z' },
+    anel:        { vb: '0 0 100 100', d: 'M50 0a50 50 0 1 0 0 100a50 50 0 1 0 0-100zM50 25.6a24.4 24.4 0 1 1 0 48.8a24.4 24.4 0 1 1 0-48.8z', er: true },
+    semicirculo: { vb: '0 0 100 50',  d: 'M0 0h100a50 50 0 0 1-100 0z' },
+    quarto:      { vb: '0 0 100 100', d: 'M0 0h100a100 100 0 0 1-100 100z' },
+    pilula:      { vb: '0 0 266 100', d: 'M50 0h166a50 50 0 0 1 0 100H50a50 50 0 0 1 0-100z' },
+    semipilula:  { vb: '0 0 197 100', d: 'M197 0H50a50 50 0 0 0 0 100h147z' },
+    meioanel:    { vb: '0 0 100 50',  d: 'M0 0h100a50 50 0 0 1-100 0zM25.6 0h48.8a24.4 24.4 0 0 1-48.8 0z', er: true },
+    quartoanel:  { vb: '0 0 100 100', d: 'M0 0h100a100 100 0 0 1-100 100zM0 0h48.7a48.7 48.7 0 0 1-48.7 48.7z', er: true },
+  };
+  const SHAPE_NAME = { circulo: 'círculo', anel: 'anel', semicirculo: 'semicírculo', quarto: 'quarto de círculo', pilula: 'pílula', semipilula: 'semi-pílula', meioanel: 'meio-anel', quartoanel: 'quarto de anel' };
+
+  // Uma forma: t (tipo), c (papel 0-3 ou 'safe'), x|rx (left|right), y|by (top|bottom), w, h, rot.
+  const sh = (t, c, pos, w, h, rot) => ({ t, c, ...pos, w, h: h || w, rot: rot || 0 });
+
+  // ---- Composições por estrutura. A = a atual de social-posts.md; B, C, D = novas.
+  const COMPS = {
+    capa: {
+      A: { desc: 'quarto TR + meio-anel na base + semi-pílula à direita', shapes: [sh('quarto', 0, { rx: -1, y: -1 }, 540, 540, 90), sh('meioanel', 1, { x: 60, by: -1 }, 324, 162, 180), sh('semipilula', 2, { rx: -1, by: 300 }, 238, 121)], zone: { x: 88, y: 600, w: 904, h: 520 }, logo: 'tl', bar: 'right' },
+      B: { desc: 'círculo grande sangrando TL + pílula à direita + quarto de anel BL', shapes: [sh('circulo', 0, { x: -220, y: -220 }, 640), sh('pilula', 1, { rx: -140, by: 200 }, 400, 150), sh('quartoanel', 2, { x: -1, by: -1 }, 240, 240, 270)], zone: { x: 88, y: 640, w: 904, h: 480 }, logo: 'tr', bar: 'right' },
+      C: { desc: 'semicírculo largo no topo + anel à direita + círculo pequeno BL', shapes: [sh('semicirculo', 0, { x: 240, y: -1 }, 600, 300), sh('anel', 1, { rx: -110, y: 360 }, 260), sh('circulo', 2, { x: -80, by: -80 }, 160)], zone: { x: 88, y: 560, w: 830, h: 560 }, logo: 'bottom', bar: 'right' },
+      D: { desc: 'pílula vertical à esquerda + quarto BR + meio-anel no topo', shapes: [sh('pilula', 0, { x: -290, y: 469 }, 700, 263, 90), sh('quarto', 1, { rx: -1, by: -1 }, 400, 400, 180), sh('meioanel', 2, { rx: 160, y: -1 }, 220, 110)], zone: { x: 260, y: 200, w: 730, h: 620 }, logo: 'tl', bar: 'left' },
+    },
+    conteudo: {
+      A: { desc: 'quarto TR + anel pequeno BL; título à esquerda do quarto', shapes: [sh('quarto', 0, { rx: -1, y: -1 }, 470, 470, 90), sh('anel', 3, { x: -100, by: -100 }, 200)], zone: { x: 88, y: 236, w: 904, h: 920 }, label: 'left', counter: 'tr', title: { ml: 0, maxW: 500, minH: 270 }, bar: 'right' },
+      B: { desc: 'quarto TL + anel à direita; rótulo pela direita, título ao lado do quarto', shapes: [sh('quarto', 0, { x: -1, y: -1 }, 380), sh('anel', 2, { rx: -80, by: 220 }, 160)], zone: { x: 88, y: 236, w: 904, h: 920 }, label: 'right', counter: 'bar', title: { ml: 330, maxW: 574, minH: 270 }, bar: 'right' },
+      C: { desc: 'cacho de 3 formas pequenas no canto superior direito; topo livre', shapes: [sh('semicirculo', 0, { rx: 100, y: -1 }, 280, 140), sh('circulo', 1, { rx: -70, y: 180 }, 200), sh('anel', 2, { rx: 330, y: 230 }, 110)], zone: { x: 88, y: 236, w: 904, h: 920 }, label: 'left', counter: 'bar', title: { ml: 0, maxW: 560, minH: 270 }, bar: 'right' },
+      D: { desc: 'círculo grande BR atrás dos cards + meio-anel no topo; título largo', shapes: [sh('circulo', 0, { rx: -200, by: -200 }, 620), sh('meioanel', 1, { x: 420, y: -1 }, 240, 120)], zone: { x: 88, y: 236, w: 904, h: 920 }, label: 'left', counter: 'tr', title: { ml: 0, maxW: 904, minH: 200 }, bar: 'left' },
+    },
+    enfase: {
+      A: { desc: 'quarto BL + semicírculo no topo + anel à direita', shapes: [sh('quarto', 0, { x: -1, by: -1 }, 518, 518, 270), sh('semicirculo', 2, { x: 380, y: -1 }, 280, 140), sh('anel', 1, { rx: -70, y: 560 }, 180)], zone: { x: 88, y: 220, w: 860, h: 620 }, chip: 160, counter: 'tr', bar: 'right' },
+      B: { desc: 'círculo enorme centrado atrás do texto (cor segura) + anel TL; número-chave', shapes: [sh('circulo', 'safe', { x: 140, y: 335 }, 800), sh('anel', 2, { x: -70, y: -70 }, 200)], zone: { x: 180, y: 430, w: 720, h: 610, center: true }, numeral: true, counter: 'tr', bar: 'right' },
+      C: { desc: 'quartos TL e BR em diagonal; texto na faixa central', shapes: [sh('quarto', 0, { x: -1, y: -1 }, 400), sh('quarto', 1, { rx: -1, by: -1 }, 400, 400, 180)], zone: { x: 88, y: 470, w: 904, h: 420 }, chip: 120, counter: 'tr', bar: 'left' },
+      D: { desc: 'meio-anel grande sangrando pela direita + pílula na base esquerda', shapes: [sh('meioanel', 0, { x: 690, y: 530 }, 520, 260, 90), sh('pilula', 1, { x: -120, by: 120 }, 380, 143)], zone: { x: 88, y: 220, w: 700, h: 640 }, chip: 160, counter: 'tr', bar: 'right' },
+    },
+    convite: {
+      A: { desc: 'quarto BR + anel BL', shapes: [sh('quarto', 0, { rx: -1, by: -1 }, 470, 470, 180), sh('anel', 2, { x: -100, by: -100 }, 200)], zone: { x: 88, y: 236, w: 904, h: 720 }, label: 'left', counter: 'tr', h1w: 900, bar: 'right' },
+      B: { desc: 'semicírculo largo na base + anel à direita; conteúdo no topo', shapes: [sh('semicirculo', 0, { x: 140, by: -1 }, 800, 400, 180), sh('anel', 1, { rx: -90, y: 200 }, 220)], zone: { x: 88, y: 236, w: 904, h: 700 }, label: 'left', counter: 'tr', h1w: 840, bar: 'none' },
+      C: { desc: 'círculo sangrando TR + pílula BL', shapes: [sh('circulo', 0, { rx: -180, y: -180 }, 520), sh('pilula', 1, { x: -160, by: 160 }, 420, 158)], zone: { x: 88, y: 236, w: 904, h: 720 }, label: 'left', counter: 'bar', h1w: 900, bar: 'right' },
+      D: { desc: 'quatro formas pequenas nos cantos; centro livre', shapes: [sh('quartoanel', 0, { x: -1, y: -1 }, 220), sh('circulo', 1, { rx: -60, y: -60 }, 180), sh('anel', 2, { x: -70, by: -70 }, 200), sh('semipilula', 1, { rx: -1, by: 260 }, 200, 101)], zone: { x: 88, y: 300, w: 904, h: 720 }, label: 'none', counter: 'none', h1w: 900, bar: 'right' },
+    },
+    fechamento: {
+      A: { desc: 'espelho da capa A: quarto TL + meio-anel na base + semi-pílula à esquerda', shapes: [sh('quarto', 0, { x: -1, y: -1 }, 540), sh('meioanel', 1, { rx: 60, by: -1 }, 324, 162, 180), sh('semipilula', 2, { x: -1, y: 620 }, 238, 121, 180)], zone: { x: 88, y: 600, w: 904, h: 300 }, counter: 'tr' },
+      B: { desc: 'espelho da capa B: círculo TR + pílula à esquerda + quarto de anel BR', shapes: [sh('circulo', 0, { rx: -220, y: -220 }, 640), sh('pilula', 1, { x: -140, by: 200 }, 400, 150), sh('quartoanel', 2, { rx: -1, by: -1 }, 240, 240, 90)], zone: { x: 88, y: 560, w: 904, h: 300 }, counter: 'none' },
+      C: { desc: 'anel grande centrado atrás da logo (cor segura) + círculo TR', shapes: [sh('anel', 'safe', { x: 140, y: 335 }, 800), sh('circulo', 2, { rx: -60, y: -60 }, 160)], zone: { x: 88, y: 560, w: 904, h: 300 }, counter: 'none' },
+      D: { desc: 'semicírculo no topo + semi-pílula na base à direita', shapes: [sh('semicirculo', 0, { x: 240, y: -1 }, 600, 300), sh('semipilula', 1, { rx: -1, by: 120 }, 300, 152)], zone: { x: 88, y: 520, w: 904, h: 300 }, counter: 'tr' },
+    },
+  };
+  const STRUCTS = [
+    { id: 'capa', name: 'Capa', role: '1º quadro: logo, chamada e apoio' },
+    { id: 'conteudo', name: 'Conteúdo', role: 'explicação: rótulo, título, descrição e bloco' },
+    { id: 'enfase', name: 'Ênfase', role: 'pergunta-gancho ou número-chave' },
+    { id: 'convite', name: 'Convite', role: 'chamada + botão de contato' },
+    { id: 'fechamento', name: 'Fechamento', role: 'logo grande, site, parceiros' },
+  ];
+
+  const ARROW = (s, stroke) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${stroke}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>`;
+
+  function shapeHTML(s, bg) {
+    const def = SHAPES[s.t];
+    const color = s.c === 'safe' ? bg.safe : bg.roles[s.c];
+    const pos = [s.x != null ? `left:${s.x}px` : `right:${s.rx}px`, s.y != null ? `top:${s.y}px` : `bottom:${s.by}px`, `width:${s.w}px`, `height:${s.h}px`, `color:${C[color]}`, s.rot ? `transform:rotate(${s.rot}deg)` : ''].filter(Boolean).join(';');
+    return `<svg class="shape" viewBox="${def.vb}" aria-hidden="true" style="${pos}"><path fill="currentColor"${def.er ? ' fill-rule="evenodd"' : ''} d="${def.d}"></path></svg>`;
+  }
+  function zoneHTML(z) { return `<div class="zone" style="left:${z.x}px; top:${z.y}px; width:${z.w}px; height:${z.h}px;"></div>`; }
+  function logoImg(bg, h) { return `<img src="logo/logomarca-horizontal-${bg.logo}.svg" alt="Gov Hub" style="height:${h}px; width:auto; display:block;">`; }
+  function chipHTML(bg, size, radius) {
+    return `<div class="chip txt" style="width:${size}px; height:${size}px; border-radius:${radius || 20}px; background:${C[bg.chip]};"><img src="logo/icone-none-white.svg" alt=""></div>`;
+  }
+  function bottomBar(bg, comp, opts) {
+    if (comp.bar === 'none') return '';
+    const hint = `<span class="post__hint">Arraste para o lado ${ARROW(28, bg.text)}</span>`;
+    const logo = opts.logo ? `<div>${logoImg(bg, 44)}</div>` : '';
+    const counter = comp.counter === 'bar' ? `<span style="font-size:24px; font-weight:600; font-variant-numeric:tabular-nums;">${opts.n}</span>` : '';
+    if (comp.bar === 'left') return `<div class="post__bottom" style="justify-content:flex-start; color:${bg.text};">${logo}${counter}${hint}</div>`;
+    return `<div class="post__bottom" style="justify-content:space-between; color:${bg.text};"><div style="display:flex; gap:40px; align-items:center;">${logo}${counter}</div>${hint}</div>`;
+  }
+  function counterHTML(bg, comp, n) {
+    if (comp.counter !== 'tr') return '';
+    return `<div class="post__counter" style="right:88px; top:104px; color:${bg.text};">${n}</div>`;
+  }
+  function labelHTML(bg, comp, text) {
+    if (!comp.label || comp.label === 'none') return '';
+    const [fill, tx] = bg.label;
+    return `<div class="post__label post__label--${comp.label} txt" style="background:${C[fill]}; color:${C[tx]};">${text}</div>`;
+  }
+
+  const R = {
+    capa(bg, comp) {
+      const z = comp.zone;
+      const logo = comp.logo === 'tl' ? `<div style="position:absolute; left:${z.x}px; top:96px;">${logoImg(bg, 80)}</div>`
+        : comp.logo === 'tr' ? `<div style="position:absolute; right:88px; top:96px;">${logoImg(bg, 80)}</div>` : '';
+      return logo + `<div class="post__content" style="left:${z.x}px; width:${z.w}px; top:${z.y}px; gap:36px;">
+        <h1 class="post__h1 txt" style="font-size:112px; color:${bg.text};">Chamada da capa em duas linhas.</h1>
+        <p class="post__p txt" style="font-size:36px; max-width:700px; color:${bg.muted};">Texto de apoio em duas ou três linhas, dizendo do que se trata a peça.</p>
+      </div>` + bottomBar(bg, comp, { logo: comp.logo === 'bottom', n: '01/07' });
+    },
+    conteudo(bg, comp) {
+      const z = comp.zone, t = comp.title;
+      const card = (title) => `<div class="card txt">${chipHTML(BG.peach, 96)}<div class="card__title">${title}</div><div class="card__desc">Descrição em até três linhas, discreta e justificada.</div></div>`;
+      return labelHTML(bg, comp, 'Rótulo da seção') + counterHTML(bg, comp, '02/07') + `<div class="post__content" style="left:${z.x}px; width:${z.w}px; top:${z.y}px; gap:28px;">
+        <div style="margin-left:${t.ml}px; max-width:${t.maxW}px; min-height:${t.minH}px; display:flex; align-items:flex-end;"><h1 class="post__h1 txt" style="font-size:66px; color:${bg.text};">Título forte em até três linhas.</h1></div>
+        <p class="post__p txt" style="font-size:33px; color:${bg.muted};">Descrição discreta e justificada, de três a quatro linhas, com o texto original do briefing que explica o assunto do quadro.</p>
+        <div class="txt" style="display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:24px; margin-top:8px;">${card('Título do card')}${card('Título do card')}</div>
+      </div>` + bottomBar(bg, comp, { logo: true, n: '02/07' });
+    },
+    enfase(bg, comp) {
+      const z = comp.zone;
+      if (comp.numeral) {
+        return counterHTML(bg, comp, '04/07') + `<div class="post__content" style="left:${z.x}px; width:${z.w}px; top:${z.y}px; gap:24px; align-items:center; text-align:center;">
+          <div class="txt" style="font-family:var(--font-head); font-weight:700; font-size:190px; line-height:1; color:${C[bg.numeral]};">87%</div>
+          <h1 class="post__h1 txt" style="font-size:58px; color:${bg.text}; max-width:640px;">Frase curta que dá sentido ao número.</h1>
+        </div>` + bottomBar(bg, comp, { logo: false, n: '04/07' });
+      }
+      return counterHTML(bg, comp, '04/07') + `<div class="post__content" style="left:${z.x}px; width:${z.w}px; top:${z.y}px; gap:40px;">
+        ${chipHTML(bg, comp.chip, 28)}
+        <h1 class="post__h1 txt" style="font-size:62px; color:${bg.text}; max-width:860px;">Pergunta-gancho ou frase de impacto em até quatro linhas?</h1>
+        <p class="post__p txt" style="max-width:620px; color:${bg.muted};">Apoio de uma ou duas linhas que reforça a dor.</p>
+      </div>` + bottomBar(bg, comp, { logo: false, n: '04/07' });
+    },
+    convite(bg, comp) {
+      const z = comp.zone, [ctaBg, ctaTx] = bg.cta;
+      return labelHTML(bg, comp, 'Vamos conversar') + counterHTML(bg, comp, '06/07') + `<div class="post__content" style="left:${z.x}px; width:${z.w}px; top:${z.y}px; gap:32px;">
+        ${chipHTML(bg, 128)}
+        <h1 class="post__h1 txt" style="font-size:66px; color:${bg.text}; max-width:${comp.h1w}px;">Chamada do convite em até três linhas?</h1>
+        <p class="post__p txt" style="max-width:560px; color:${bg.muted};">Apoio de duas linhas convidando ao contato.</p>
+        <div class="txt" style="display:flex; flex-direction:column; gap:22px; margin-top:8px;">
+          <div style="display:inline-flex; align-items:center; gap:16px; align-self:flex-start; padding:24px 40px; border-radius:999px; background:${C[ctaBg]}; color:${ctaTx}; font-size:30px; font-weight:700;">Fale com a gente ${ARROW(30, ctaTx)}</div>
+          <div style="display:flex; flex-direction:column; gap:6px;"><span style="font-size:30px; font-weight:700; color:${bg.text};">gov-hub.io</span><span style="font-size:26px; font-weight:500; color:${bg.muted};">caguiar@unb.br</span></div>
+        </div>
+      </div>` + bottomBar(bg, comp, { logo: false, n: '06/07' });
+    },
+    fechamento(bg, comp) {
+      const z = comp.zone;
+      const partners = bg.logo === 'white' ? ['lab-livre-white', 'unb-light'] : ['lab-livre-blue', 'unb-dark'];
+      return counterHTML(bg, comp, '07/07') + `<div class="post__content" style="left:${z.x}px; width:${z.w}px; top:${z.y}px; gap:28px; align-items:center; text-align:center;">
+        ${logoImg(bg, 112)}
+        <div class="txt" style="font-size:40px; font-weight:700; color:${bg.text};">gov-hub.io</div>
+        <div class="txt" style="font-family:var(--font-head); font-weight:600; text-transform:uppercase; letter-spacing:.06em; font-size:34px; color:${bg.muted};">Tagline da marca.</div>
+      </div>
+      <div style="position:absolute; left:88px; right:88px; top:1000px; display:flex; flex-direction:column; align-items:center; gap:28px;">
+        <div class="txt" style="font-size:22px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:${bg.muted};">Uma iniciativa de</div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:48px;"><img src="logo/${partners[0]}.svg" alt="Lab Livre" style="height:60px; width:auto;"><img src="logo/${partners[1]}.svg" alt="UnB" style="height:60px; width:auto;"></div>
+      </div>`;
+    },
+  };
+
+  function postHTML(structId, compId, bgId, extraStyle, opts) {
+    const bg = BG[bgId], comp = COMPS[structId][compId], o = opts || {};
+    return `<div class="post ${bg.dark ? 'post--light' : 'post--dark'}" lang="pt-BR" style="background:${C[bgId]}; color:${bg.text}; ${extraStyle || ''}">`
+      + comp.shapes.map(s => shapeHTML(s, bg)).join('')
+      + R[structId](bg, comp)
+      + (o.zone === false ? '' : zoneHTML(comp.zone))
+      + `</div>`;
+  }
+  // @spec-end
+
+  // ---- catálogo
+  const items = [];
+  for (const s of STRUCTS) for (const compId of ['A', 'B', 'C', 'D']) for (const bgId of BG_ORDER) {
+    items.push({ id: `${s.id}-${compId}-${bgId}`, struct: s.id, structName: s.name, comp: compId, bg: bgId, desc: COMPS[s.id][compId].desc });
+  }
+
+  // ---- filtros (persistidos por viewer, só conveniência)
+  const state = { struct: 'all', bg: 'all', comp: 'all', text: true, zones: false };
+  try { Object.assign(state, JSON.parse(localStorage.getItem('gh-post-gallery') || '{}')); } catch (e) {}
+  const save = () => { try { localStorage.setItem('gh-post-gallery', JSON.stringify(state)); } catch (e) {} };
+
+  function buildGroup(el, key, options) {
+    const all = document.createElement('button'); all.type = 'button'; all.textContent = 'Todos'; all.dataset.v = 'all'; el.appendChild(all);
+    for (const o of options) {
+      const b = document.createElement('button'); b.type = 'button'; b.dataset.v = o.v;
+      b.innerHTML = (o.color ? `<i class="swatch" style="background:${o.color}"></i>` : '') + o.label; el.appendChild(b);
+    }
+    el.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; state[key] = b.dataset.v; save(); sync(); });
+  }
+  buildGroup(document.getElementById('f-struct'), 'struct', STRUCTS.map(s => ({ v: s.id, label: s.name })));
+  buildGroup(document.getElementById('f-bg'), 'bg', BG_ORDER.map(b => ({ v: b, label: NAME[b], color: C[b] })));
+  buildGroup(document.getElementById('f-comp'), 'comp', [{ v: 'A', label: 'A (atual)' }, { v: 'B', label: 'B' }, { v: 'C', label: 'C' }, { v: 'D', label: 'D' }]);
+  const tText = document.getElementById('t-text'), tZones = document.getElementById('t-zones');
+  tText.checked = state.text; tZones.checked = state.zones;
+  tText.addEventListener('change', () => { state.text = tText.checked; save(); sync(); });
+  tZones.addEventListener('change', () => { state.zones = tZones.checked; save(); sync(); });
+
+  const grid = document.getElementById('grid'), empty = document.getElementById('empty'), count = document.getElementById('count');
+  let visible = [];
+  function sync() {
+    for (const [key, id] of [['struct', 'f-struct'], ['bg', 'f-bg'], ['comp', 'f-comp']]) {
+      document.querySelectorAll(`#${id} button`).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === state[key])));
+    }
+    document.body.classList.toggle('gallery--no-text', !state.text);
+    document.body.classList.toggle('gallery--no-zones', !state.zones);
+    visible = items.filter(i => (state.struct === 'all' || i.struct === state.struct) && (state.bg === 'all' || i.bg === state.bg) && (state.comp === 'all' || i.comp === state.comp));
+    grid.innerHTML = visible.map((i, idx) => `<div class="tile" role="button" tabindex="0" data-idx="${idx}" aria-label="Ampliar ${i.structName} ${i.comp} ${NAME[i.bg]}">
+      <div class="tile__frame">${postHTML(i.struct, i.comp, i.bg)}</div>
+      <div class="tile__meta"><b>${i.structName} · ${i.comp}</b><span>${NAME[i.bg]}</span></div>
+    </div>`).join('');
+    empty.hidden = visible.length > 0;
+    count.textContent = `${visible.length} de ${items.length} quadros`;
+    scaleTiles();
+  }
+  function scaleTiles() {
+    const first = grid.querySelector('.tile__frame');
+    if (!first) return;
+    const s = first.clientWidth / 1080;
+    grid.style.setProperty('--s', s.toFixed(4));
+  }
+  new ResizeObserver(scaleTiles).observe(grid);
+
+  // ---- modal
+  let modal = null, cur = -1;
+  function openModal(idx) {
+    cur = idx; const i = visible[idx]; if (!i) return;
+    if (!modal) {
+      modal = document.createElement('div'); modal.className = 'modal'; modal.setAttribute('role', 'dialog'); modal.setAttribute('aria-modal', 'true');
+      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+      document.body.appendChild(modal);
+    }
+    const maxW = Math.min(window.innerWidth - 32, 720), maxH = window.innerHeight - 120;
+    const s = Math.min(maxW / 1080, maxH / 1350);
+    modal.innerHTML = `<div class="modal__frame" style="width:${1080 * s}px; height:${1350 * s}px;">${postHTML(i.struct, i.comp, i.bg, `transform:scale(${s});`)}</div>
+      <div class="modal__bar"><button type="button" data-nav="-1" aria-label="Anterior">←</button><span><b>${i.structName} · ${i.comp} · ${NAME[i.bg]}</b> &nbsp;·&nbsp; ${i.desc}</span><button type="button" data-nav="1" aria-label="Próximo">→</button><button type="button" data-close="1">Fechar</button></div>`;
+    modal.hidden = false;
+    modal.querySelectorAll('[data-nav]').forEach(b => b.addEventListener('click', () => openModal((cur + Number(b.dataset.nav) + visible.length) % visible.length)));
+    modal.querySelector('[data-close]').addEventListener('click', closeModal);
+    modal.querySelector('[data-close]').focus();
+  }
+  function closeModal() { if (modal) modal.hidden = true; cur = -1; }
+  grid.addEventListener('click', e => { const t = e.target.closest('.tile'); if (t) openModal(Number(t.dataset.idx)); });
+  grid.addEventListener('keydown', e => { if (e.key !== 'Enter' && e.key !== ' ') return; const t = e.target.closest('.tile'); if (t) { e.preventDefault(); openModal(Number(t.dataset.idx)); } });
+  document.addEventListener('keydown', e => {
+    if (cur < 0) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') openModal((cur + 1) % visible.length);
+    if (e.key === 'ArrowLeft') openModal((cur - 1 + visible.length) % visible.length);
+  });
+  window.addEventListener('resize', () => { if (cur >= 0) openModal(cur); });
+
+  sync();
+})();
+</script>
