@@ -258,7 +258,7 @@
     },
     fechamento(bg, comp) {
       const z = comp.zone;
-      const partners = bg.logo === 'white' ? ['lab-livre-white', 'unb-light'] : ['lab-livre-blue', 'unb-dark'];
+      const partners = bg.logo === 'white' ? ['lab-livre-white', 'unb-light-outlined'] : ['lab-livre-black', 'unb-dark-outlined'];
       return counterHTML(bg, comp, '07/07') + `<div class="post__content" style="left:${z.x}px; width:${z.w}px; top:${z.y}px; gap:28px; align-items:center; text-align:center;">
         ${logoImg(bg, 112)}
         <div class="txt" style="font-size:40px; font-weight:700; color:${bg.text};">gov-hub.io</div>
