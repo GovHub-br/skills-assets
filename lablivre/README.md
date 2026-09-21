@@ -40,8 +40,8 @@ linha de parceiros traz UnB + Gov Hub.
 https://cdn.jsdelivr.net/gh/GovHub-br/skills-assets@main/lablivre/<pasta>/<arquivo>
 ```
 
-Os assets do Gov Hub continuam nas pastas da raiz (`icons/`,
-`graphic-elements/`, `post-templates/`); não misture os dois conjuntos.
+Os assets do Gov Hub ficam na pasta irmã `gov-hub/`, com a mesma
+estrutura; não misture os dois conjuntos.
 
 Documentação de uso: skill `lablivre-visual-identity` do repo
 [GovHub-skills](https://github.com/GovHub-br/GovHub-skills).

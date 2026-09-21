@@ -17,7 +17,7 @@ vira PNG com Chrome headless.
 
 - `index.html`: galeria interativa com todos os 100 (filtros, ampliar,
   zonas de texto). Abra local ou em
-  <https://cdn.jsdelivr.net/gh/GovHub-br/skills-assets@main/post-templates/index.html>.
+  <https://cdn.jsdelivr.net/gh/GovHub-br/skills-assets@main/lablivre/post-templates/index.html>.
 - `gen.js`: gera os 100 arquivos a partir da spec embutida em `index.html`
   (bloco `@spec-start`…`@spec-end`). **Não edite os arquivos gerados à
   mão**: altere a spec e rode `node gen.js`.
