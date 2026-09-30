@@ -1,0 +1,582 @@
+[
+ {
+  "n": 1,
+  "file": "01-capa-capa-chamada-gigante-navy.html",
+  "name": "Capa · chamada gigante",
+  "struct": "capa",
+  "fundo": "navy",
+  "origem": "v16",
+  "id": "v22-20-16-capa",
+  "desc": "navy, chamada enorme em Reddit Sans, pílula cinza claro e círculo tonal · tema escuro: fundo navy, elementos claros · da v16"
+ },
+ {
+  "n": 2,
+  "file": "02-capa-pilula-na-chamada-navy.html",
+  "name": "Pílula na chamada",
+  "struct": "capa",
+  "fundo": "navy",
+  "origem": "v16",
+  "id": "v22-20-16-pilula-inline",
+  "desc": "fundo claro, chamada roxa com pílula navy sangrando na 2ª linha; bloco com recorte para a logo · tema escuro: fundo navy, elementos claros · da v16"
+ },
+ {
+  "n": 3,
+  "file": "03-capa-capa-d-navy.html",
+  "name": "Capa D",
+  "struct": "capa",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-capa-D",
+  "desc": "semicírculo roxo largo nascendo da base + pílula cinza claro no alto à direita · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 4,
+  "file": "04-capa-capa-chamada-gigante-roxo.html",
+  "name": "Capa · chamada gigante",
+  "struct": "capa",
+  "fundo": "roxo",
+  "origem": "v3",
+  "id": "v22-20-3-capa",
+  "desc": "roxo chapado, chamada enorme em Reddit Sans, pílula pêssego e círculo tonal · da v3 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 5,
+  "file": "05-capa-capa-d-roxo.html",
+  "name": "Capa D",
+  "struct": "capa",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-capa-D",
+  "desc": "semicírculo roxo largo nascendo da base + pílula pêssego no alto à direita · Reddit Sans · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 6,
+  "file": "06-capa-pilula-na-chamada-roxo.html",
+  "name": "Pílula na chamada",
+  "struct": "capa",
+  "fundo": "roxo",
+  "origem": "v3 roxo",
+  "id": "v22-21-pilula-inline",
+  "desc": "fundo claro, chamada roxa com pílula navy sangrando na 2ª linha; bloco com recorte para a logo · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 7,
+  "file": "07-conteudo-circulo-com-texto-claro.html",
+  "name": "Círculo com texto",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v17",
+  "id": "v22-20-17-circulo-texto",
+  "desc": "chamada de peso misto no alto; círculo roxo sangrando com frases curtas e a logo; painel à direita · da v17"
+ },
+ {
+  "n": 8,
+  "file": "08-conteudo-lista-estilo-app-claro.html",
+  "name": "Lista estilo app",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v17",
+  "id": "v22-20-17-lista-app",
+  "desc": "três linhas brancas como itens de app, número em círculo roxo e seta · da v17"
+ },
+ {
+  "n": 9,
+  "file": "09-conteudo-card-pasta-navy.html",
+  "name": "Card-pasta",
+  "struct": "conteudo",
+  "fundo": "navy",
+  "origem": "v16",
+  "id": "v22-20-16-pasta",
+  "desc": "pasta navy com aba e tira cinza claro; dentro, o dataset como “cartão” · tema escuro: fundo navy, elementos claros · da v16"
+ },
+ {
+  "n": 10,
+  "file": "10-conteudo-circulo-com-texto-navy.html",
+  "name": "Círculo com texto",
+  "struct": "conteudo",
+  "fundo": "navy",
+  "origem": "v16",
+  "id": "v22-20-16-circulo-texto",
+  "desc": "chamada de peso misto no alto; círculo roxo sangrando com frases curtas e a logo; painel à direita · tema escuro: fundo navy, elementos claros · da v16"
+ },
+ {
+  "n": 11,
+  "file": "11-conteudo-notificacoes-navy.html",
+  "name": "Notificações",
+  "struct": "conteudo",
+  "fundo": "navy",
+  "origem": "v16",
+  "id": "v22-20-16-notificacoes",
+  "desc": "três notificações empilhadas como objeto; chamada embaixo à direita com tag · tema escuro: fundo navy, elementos claros · da v16"
+ },
+ {
+  "n": 12,
+  "file": "12-conteudo-lista-estilo-app-navy.html",
+  "name": "Lista estilo app",
+  "struct": "conteudo",
+  "fundo": "navy",
+  "origem": "v16",
+  "id": "v22-20-16-lista-app",
+  "desc": "três linhas brancas como itens de app, número em círculo roxo e seta · tema escuro: fundo navy, elementos claros · da v16"
+ },
+ {
+  "n": 13,
+  "file": "13-conteudo-lista-numerada-navy.html",
+  "name": "Lista numerada",
+  "struct": "conteudo",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-lista-numerada",
+  "desc": "numerais Reddit Sans roxos + item em negrito e descrição; troca os bullets · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 14,
+  "file": "14-conteudo-marcadores-circulo-navy.html",
+  "name": "Marcadores-círculo",
+  "struct": "conteudo",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-lista-marcadores",
+  "desc": "frases curtas com o círculo roxo da marca como marcador · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 15,
+  "file": "15-conteudo-cards-pessego-navy.html",
+  "name": "Cards pêssego",
+  "struct": "conteudo",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-cards-pessego",
+  "desc": "cards em bloco cinza claro, sem contorno, com ícone de produto · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 16,
+  "file": "16-conteudo-linha-do-tempo-navy.html",
+  "name": "Linha do tempo",
+  "struct": "conteudo",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-linha-tempo",
+  "desc": "marcos com anel roxo sobre trilho cinza claro · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 17,
+  "file": "17-conteudo-texto-destaque-navy.html",
+  "name": "Texto + destaque",
+  "struct": "conteudo",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-texto-destaque",
+  "desc": "parágrafo curto e a frase-chave num bloco cinza claro · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 18,
+  "file": "18-conteudo-lista-numerada-claro.html",
+  "name": "Lista numerada",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-lista-numerada",
+  "desc": "numerais Reddit Sans roxos + item em negrito e descrição; troca os bullets · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 19,
+  "file": "19-conteudo-marcadores-circulo-claro.html",
+  "name": "Marcadores-círculo",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-lista-marcadores",
+  "desc": "frases curtas com o círculo roxo da marca como marcador · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 20,
+  "file": "20-conteudo-checklist-com-faixa-pessego-claro.html",
+  "name": "Checklist com faixa pêssego",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-lista-checklist",
+  "desc": "título numa faixa pêssego no topo + itens com check roxo · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 21,
+  "file": "21-conteudo-cards-pessego-claro.html",
+  "name": "Cards pêssego",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-cards-pessego",
+  "desc": "cards em bloco pêssego, sem contorno, com ícone de produto · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 22,
+  "file": "22-conteudo-linha-do-tempo-claro.html",
+  "name": "Linha do tempo",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-linha-tempo",
+  "desc": "marcos com anel roxo sobre trilho pêssego · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 23,
+  "file": "23-conteudo-texto-destaque-claro.html",
+  "name": "Texto + destaque",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-texto-destaque",
+  "desc": "parágrafo curto e a frase-chave num bloco pêssego · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 24,
+  "file": "24-conteudo-circulo-com-texto-claro.html",
+  "name": "Círculo com texto",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v3",
+  "id": "v22-20-3-circulo-texto",
+  "desc": "chamada de peso misto no alto; círculo roxo sangrando com frases curtas e a logo; painel à direita · da v3 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 25,
+  "file": "25-conteudo-notificacoes-roxo.html",
+  "name": "Notificações",
+  "struct": "conteudo",
+  "fundo": "roxo",
+  "origem": "v3",
+  "id": "v22-20-3-notificacoes",
+  "desc": "três notificações empilhadas como objeto; chamada embaixo à direita com tag · da v3 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 26,
+  "file": "26-conteudo-lista-estilo-app-claro.html",
+  "name": "Lista estilo app",
+  "struct": "conteudo",
+  "fundo": "claro",
+  "origem": "v3",
+  "id": "v22-20-3-lista-app",
+  "desc": "três linhas brancas como itens de app, número em círculo roxo e seta · da v3 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 27,
+  "file": "27-conteudo-lista-numerada-roxo.html",
+  "name": "Lista numerada",
+  "struct": "conteudo",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-lista-numerada",
+  "desc": "numerais Reddit Sans roxos + item em negrito e descrição; troca os bullets · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 28,
+  "file": "28-conteudo-marcadores-circulo-roxo.html",
+  "name": "Marcadores-círculo",
+  "struct": "conteudo",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-lista-marcadores",
+  "desc": "frases curtas com o círculo roxo da marca como marcador · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 29,
+  "file": "29-conteudo-checklist-com-faixa-pessego-roxo.html",
+  "name": "Checklist com faixa pêssego",
+  "struct": "conteudo",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-lista-checklist",
+  "desc": "título numa faixa pêssego no topo + itens com check roxo · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 30,
+  "file": "30-conteudo-cards-pessego-roxo.html",
+  "name": "Cards pêssego",
+  "struct": "conteudo",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-cards-pessego",
+  "desc": "cards em bloco pêssego, sem contorno, com ícone de produto · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 31,
+  "file": "31-conteudo-linha-do-tempo-roxo.html",
+  "name": "Linha do tempo",
+  "struct": "conteudo",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-linha-tempo",
+  "desc": "marcos com anel roxo sobre trilho pêssego · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 32,
+  "file": "32-conteudo-texto-destaque-roxo.html",
+  "name": "Texto + destaque",
+  "struct": "conteudo",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-texto-destaque",
+  "desc": "parágrafo curto e a frase-chave num bloco pêssego · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 33,
+  "file": "33-conteudo-circulo-com-texto-roxo.html",
+  "name": "Círculo com texto",
+  "struct": "conteudo",
+  "fundo": "roxo",
+  "origem": "v3 roxo",
+  "id": "v22-21-circulo-texto",
+  "desc": "chamada de peso misto no alto; círculo roxo sangrando com frases curtas e a logo; painel à direita · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 34,
+  "file": "34-conteudo-lista-estilo-app-roxo.html",
+  "name": "Lista estilo app",
+  "struct": "conteudo",
+  "fundo": "roxo",
+  "origem": "v3 roxo",
+  "id": "v22-21-lista-app",
+  "desc": "três linhas brancas como itens de app, número em círculo roxo e seta · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 35,
+  "file": "35-dados-numero-com-pilula-claro.html",
+  "name": "Número com pílula",
+  "struct": "dados",
+  "fundo": "claro",
+  "origem": "v17",
+  "id": "v22-20-17-numero",
+  "desc": "número gigante roxo, frase de peso misto e pílula sangrando pela direita · da v17"
+ },
+ {
+  "n": 36,
+  "file": "36-dados-barras-navy.html",
+  "name": "Barras",
+  "struct": "dados",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-dados-barras",
+  "desc": "rótulo + valor em Reddit Sans + barra roxa sobre trilho cinza claro · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 37,
+  "file": "37-dados-numeros-em-grade-navy.html",
+  "name": "Números em grade",
+  "struct": "dados",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-dados-numeros",
+  "desc": "quatro números grandes em blocos cinza claro · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 38,
+  "file": "38-dados-ranking-navy.html",
+  "name": "Ranking",
+  "struct": "dados",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-dados-ranking",
+  "desc": "posição, nome e valor em pílulas alternadas; substitui a tabela · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 39,
+  "file": "39-dados-antes-e-depois-navy.html",
+  "name": "Antes e depois",
+  "struct": "dados",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-dados-comparacao",
+  "desc": "dois números lado a lado: o antigo em navy apagado, o novo em roxo · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 40,
+  "file": "40-dados-barras-claro.html",
+  "name": "Barras",
+  "struct": "dados",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-dados-barras",
+  "desc": "rótulo + valor em Reddit Sans + barra roxa sobre trilho pêssego · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 41,
+  "file": "41-dados-numeros-em-grade-claro.html",
+  "name": "Números em grade",
+  "struct": "dados",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-dados-numeros",
+  "desc": "quatro números grandes em blocos pêssego · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 42,
+  "file": "42-dados-ranking-claro.html",
+  "name": "Ranking",
+  "struct": "dados",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-dados-ranking",
+  "desc": "posição, nome e valor em pílulas alternadas; substitui a tabela · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 43,
+  "file": "43-dados-antes-e-depois-claro.html",
+  "name": "Antes e depois",
+  "struct": "dados",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-dados-comparacao",
+  "desc": "dois números lado a lado: o antigo em navy apagado, o novo em roxo · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 44,
+  "file": "44-dados-numero-com-pilula-claro.html",
+  "name": "Número com pílula",
+  "struct": "dados",
+  "fundo": "claro",
+  "origem": "v3",
+  "id": "v22-20-3-numero",
+  "desc": "número gigante roxo, frase de peso misto e pílula sangrando pela direita · da v3 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 45,
+  "file": "45-dados-barras-roxo.html",
+  "name": "Barras",
+  "struct": "dados",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-dados-barras",
+  "desc": "rótulo + valor em Reddit Sans + barra roxa sobre trilho pêssego · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 46,
+  "file": "46-dados-numeros-em-grade-roxo.html",
+  "name": "Números em grade",
+  "struct": "dados",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-dados-numeros",
+  "desc": "quatro números grandes em blocos pêssego · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 47,
+  "file": "47-dados-ranking-roxo.html",
+  "name": "Ranking",
+  "struct": "dados",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-dados-ranking",
+  "desc": "posição, nome e valor em pílulas alternadas; substitui a tabela · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 48,
+  "file": "48-dados-antes-e-depois-roxo.html",
+  "name": "Antes e depois",
+  "struct": "dados",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-dados-comparacao",
+  "desc": "dois números lado a lado: o antigo em navy apagado, o novo em roxo · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 49,
+  "file": "49-dados-numero-com-pilula-roxo.html",
+  "name": "Número com pílula",
+  "struct": "dados",
+  "fundo": "roxo",
+  "origem": "v3 roxo",
+  "id": "v22-21-numero",
+  "desc": "número gigante roxo, frase de peso misto e pílula sangrando pela direita · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 50,
+  "file": "50-enfase-numero-chave-solo-navy.html",
+  "name": "Número-chave solo",
+  "struct": "enfase",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-enfase-numero-solo",
+  "desc": "sem cabeçalho: eyebrow, número gigante e frase; quarto roxo no canto · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 51,
+  "file": "51-enfase-frase-em-bloco-pessego-navy.html",
+  "name": "Frase em bloco pêssego",
+  "struct": "enfase",
+  "fundo": "navy",
+  "origem": "v15",
+  "id": "v22-20-15-enfase-frase",
+  "desc": "a frase inteira dentro de um bloco cinza claro grande, aspas roxas · Reddit Sans · tema escuro: fundo navy, elementos claros · da v15"
+ },
+ {
+  "n": 52,
+  "file": "52-enfase-numero-chave-solo-claro.html",
+  "name": "Número-chave solo",
+  "struct": "enfase",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-enfase-numero-solo",
+  "desc": "sem cabeçalho: eyebrow, número gigante e frase; quarto roxo no canto · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 53,
+  "file": "53-enfase-frase-em-bloco-pessego-claro.html",
+  "name": "Frase em bloco pêssego",
+  "struct": "enfase",
+  "fundo": "claro",
+  "origem": "v7",
+  "id": "v22-20-7-enfase-frase",
+  "desc": "a frase inteira dentro de um bloco pêssego grande, aspas roxas · Reddit Sans · da v7 · sem pêssego (#F2F1F6)"
+ },
+ {
+  "n": 54,
+  "file": "54-enfase-numero-chave-solo-roxo.html",
+  "name": "Número-chave solo",
+  "struct": "enfase",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-enfase-numero-solo",
+  "desc": "sem cabeçalho: eyebrow, número gigante e frase; quarto roxo no canto · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 55,
+  "file": "55-enfase-frase-em-bloco-pessego-roxo.html",
+  "name": "Frase em bloco pêssego",
+  "struct": "enfase",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-enfase-frase",
+  "desc": "a frase inteira dentro de um bloco pêssego grande, aspas roxas · Reddit Sans · da v7 · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 56,
+  "file": "56-convite-convite-em-conversa-claro.html",
+  "name": "Convite em conversa",
+  "struct": "convite",
+  "fundo": "claro",
+  "origem": "v17",
+  "id": "v22-20-17-chat",
+  "desc": "balões de chat no lugar da foto; chamada e contato em cima · da v17"
+ },
+ {
+  "n": 57,
+  "file": "57-convite-convite-b-roxo.html",
+  "name": "Convite B",
+  "struct": "convite",
+  "fundo": "roxo",
+  "origem": "v7 roxo",
+  "id": "v22-21-7-convite-B",
+  "desc": "título de post + contato num bloco pêssego; círculo roxo sangrando TR · Reddit Sans · roxo: fundo #613EFF, elementos claros"
+ },
+ {
+  "n": 58,
+  "file": "58-convite-convite-em-conversa-roxo.html",
+  "name": "Convite em conversa",
+  "struct": "convite",
+  "fundo": "roxo",
+  "origem": "v3 roxo",
+  "id": "v22-21-chat",
+  "desc": "balões de chat no lugar da foto; chamada e contato em cima · roxo: fundo #613EFF, elementos claros"
+ }
+]

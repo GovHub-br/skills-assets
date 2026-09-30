@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Posts sóbrios · Gov Hub</title>
+<!-- Galeria dos templates sóbrios. Lê manifest.json e mostra cada HTML da pasta num iframe escalado.
+     Para incluir um post novo: salve o HTML aqui e acrescente a entrada no manifest.json. -->
+<style>
+  :root { --bg: #F2F1F6; --panel: #FFFFFF; --fg: #0A005A; --muted: #5B5776; --line: #DDD8EA; --accent: #613EFF; --accent-fg: #FFFFFF; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #14101F; --panel: #1E1830; --fg: #F1EEF9; --muted: #A9A2C4; --line: #2E2745; --accent: #8C71FF; --accent-fg: #0A005A; } }
+  :root[data-theme="dark"] { --bg: #14101F; --panel: #1E1830; --fg: #F1EEF9; --muted: #A9A2C4; --line: #2E2745; --accent: #8C71FF; --accent-fg: #0A005A; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 'Reddit Sans', system-ui, sans-serif; padding: 0 16px 48px; }
+  header { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 16px 0 12px; border-bottom: 1px solid var(--line); }
+  h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  header p { margin: 4px 0 10px; color: var(--muted); font-size: 13.5px; max-width: 90ch; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
+  .grp { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .grp > span { font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 700; margin-right: 4px; }
+  button { font: inherit; font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); cursor: pointer; }
+  button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+  .count { margin-left: auto; color: var(--muted); font-size: 13px; }
+  main { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 20px 16px; margin-top: 20px; }
+  .tile { background: var(--panel); border-radius: 12px; padding: 10px; }
+  .frame { width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 6px; position: relative; }
+  .frame iframe { position: absolute; left: 0; top: 0; width: 1080px; height: 1350px; border: 0; transform-origin: 0 0; pointer-events: none; }
+  .meta { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; margin-top: 8px; }
+  .meta a { color: inherit; font-weight: 700; text-decoration: none; }
+  .meta span { color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Posts sóbrios · Gov Hub</h1>
+  <p>Templates 1080×1350 do modo sóbrio (padrão). Reddit Sans, roxo #613EFF, navy #0A005A, #F2F1F6 e #BE006E nos detalhes. Um carrossel usa um fundo só. Clique no nome para abrir o HTML.</p>
+  <div class="row">
+    <div class="grp" id="f-fundo"><span>Fundo</span></div>
+    <div class="grp" id="f-struct"><span>Tipo</span></div>
+    <div class="count" id="count"></div>
+  </div>
+</header>
+<main id="grid"></main>
+<script>
+(async function () {
+  const items = await fetch('manifest.json').then(r => r.json());
+  const state = { fundo: 'todos', struct: 'todos' };
+  const uniq = (k) => ['todos', ...new Set(items.map(i => i[k]))];
+  function group(id, key) {
+    const el = document.getElementById(id);
+    uniq(key).forEach(v => { const b = document.createElement('button'); b.type = 'button'; b.textContent = v; b.dataset.v = v; el.appendChild(b); });
+    el.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; state[key] = b.dataset.v; render(); });
+  }
+  group('f-fundo', 'fundo'); group('f-struct', 'struct');
+  const grid = document.getElementById('grid');
+  function render() {
+    document.querySelectorAll('.grp button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === state[b.parentElement.id === 'f-fundo' ? 'fundo' : 'struct'])));
+    const vis = items.filter(i => (state.fundo === 'todos' || i.fundo === state.fundo) && (state.struct === 'todos' || i.struct === state.struct));
+    grid.innerHTML = vis.map(i => `<div class="tile"><div class="frame"><iframe loading="lazy" src="${i.file}" title="${i.name}" tabindex="-1"></iframe></div>
+      <div class="meta"><a href="${i.file}">${String(i.n).padStart(2, '0')} · ${i.name}</a><span>${i.fundo}</span></div></div>`).join('');
+    document.getElementById('count').textContent = `${vis.length} de ${items.length}`;
+    scale();
+  }
+  function scale() { grid.querySelectorAll('.frame').forEach(f => { const s = f.clientWidth / 1080; f.firstElementChild.style.transform = `scale(${s})`; }); }
+  new ResizeObserver(scale).observe(grid);
+  render();
+})();
+</script>
+</body>
+</html>
